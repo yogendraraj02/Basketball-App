@@ -5,9 +5,15 @@ import './index.css'
 import {  createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
 
 const router = createBrowserRouter([
-  {element : <App/>,children : [{index : true, element : <Home/>}]}
+  {element : <App/>,children : [{index : true, element : <Home/>},
+  {
+    element: <About />,
+    path: "/about",
+  },
+]}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
