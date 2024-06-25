@@ -115,3 +115,81 @@ Create the input you will need to submit the information in the register form to
 - Console.log the result
 
 Note: We are doing this with each to know what we should build on the backend.
+
+## Challenge 8
+
+Create an express server using port 3000.
+
+- There should be one route that has a path "/"
+- Do not create a controller or route for this, just create in the app.js file.
+- Send "basketball backend" from the endpoint
+- Create a postman collection for this endpoint.
+
+## Challenge 9
+
+Create a register endpoint with a controller and route.
+
+- The endpoint should be /users
+- Use the built in json middleware
+- console.log the post body in the controller
+- return the post body back using the json function in the response object.
+
+## Challenge 10
+
+Create validate the post body in the register endpoint using yup library.
+
+- Install the yup library.
+- Validate that email field is required and is an actual email.
+- Validate that password has a min of 6 and a max 30 characters long.
+- Return a 400 with bad request when input is invalid.
+
+## Challenge 11
+
+Setup the database and database connection with nodejs and dbbeaver.
+
+- Create a new database using [elephant sql](https://elephantsql.com)
+- Install dotenv and sequelize
+- create a .env file and use that string to authenticate with database in the listen function of app.js
+- Connect your new database with dbbeaver.
+
+## Challenge 12
+
+Create a UserModel and Migration.
+
+- Create the UserModel with a
+  - id primary key int
+  - email String
+  - password String
+  - createdAt DateTime
+  - updatedAt DateTime
+- Create migration, be sure to use the .env for password information.
+
+Hint: use the sequelize documentation to complete this. I will be using it.
+
+## Challenge 13
+
+Have the user endpoint create a user. Create a response function that will create a response json to look like this. The function should take in 3 parameters: type, action, and data.
+
+For the register user
+
+- type = user
+- data = create user
+- action = "create"
+
+```json
+{
+  "meta": {
+    "type": "user",
+    "action": "create"
+  },
+  "data": {
+    "id": 4,
+    "email": "noah3@gmail.com",
+    "password": "moomoo",
+    "updatedAt": "2023-11-06T17:31:58.531Z",
+    "createdAt": "2023-11-06T17:31:58.531Z"
+  }
+}
+```
+
+Don't worry about hashing the password or taking the password from the response. We'll do that in the next challenge.
