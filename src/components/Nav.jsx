@@ -1,11 +1,19 @@
-import { useState } from "react"
-import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react"
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth.context";
 
 function Nav() {
-
+    const {isLoggedIn,setIsLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
     function toggleMenu() {
         setShowMenu(prevValue => !prevValue);
+    }
+    const logout = () => {
+        localStorage.removeItem("jwt");
+        setIsLoggedIn(false);
+
+        navigate("/");
     }
     return (
         <div>
@@ -38,7 +46,8 @@ function Nav() {
                                     About
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
+                            {!isLoggedIn && (<>
+                                <li className="nav-item">
                                 <NavLink to="/register" className="nav-link">
                                     Register
                                 </NavLink>
@@ -46,8 +55,16 @@ function Nav() {
                             <li className="nav-item">
                                 <NavLink to="/login" className="nav-link">
                                     Login
-                                </NavLink>
+                                </NavLink> 
                             </li>
+                            </>)}
+                            {isLoggedIn && <>
+                                <li className="nav-item">
+                                <button onClick={logout} className="nav-link">
+                                    Logout
+                                </button>
+                            </li>
+                            </>}
                         </ul>
                     </div>
                 </div>

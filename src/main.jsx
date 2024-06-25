@@ -8,6 +8,9 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
+import AuthProvider, {  } from './contexts/auth.context.jsx'
+import Admin from './pages/Admin.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {element : <App/>,children : [{index : true, element : <Home/>},
@@ -24,12 +27,18 @@ const router = createBrowserRouter([
     element : <Login/>,
     path : '/login'
 
+  },
+  {
+    element : <ProtectedRoute><Admin /></ProtectedRoute> ,
+    path : '/admin'
   }
 ]}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider >
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

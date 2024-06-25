@@ -1,7 +1,10 @@
-import  { useState } from "react";
+import  { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth.context";
 
 const Login = () => {
+  const {setIsLoggedIn} = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
@@ -23,6 +26,9 @@ const Login = () => {
     });
 
     if (response.status == 200) {
+      const json = await response.json();
+      localStorage.setItem("jwt", json.data.token);
+      setIsLoggedIn(true);
       navigate("/admin");
       return;
     }
