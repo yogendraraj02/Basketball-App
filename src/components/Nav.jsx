@@ -58,13 +58,26 @@ function Nav() {
                                 </NavLink> 
                             </li>
                             </>)}
-                            {isLoggedIn && <>
-                                <li className="nav-item">
-                                <button onClick={logout} className="nav-link">
-                                    Logout
-                                </button>
-                            </li>
-                            </>}
+                            
+                            {isLoggedIn && (
+              <>
+                <li className="nav-item">
+                  <NavLink to="/admin" className="nav-link">
+                    Admin
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/admin/addgame" className="nav-link">
+                    New Game
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <button onClick={logout} className="nav-link">
+                    Logout
+                  </button>
+                </li>
+              </>
+            )}
                         </ul>
                     </div>
                 </div>

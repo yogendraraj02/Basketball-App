@@ -11,6 +11,7 @@ import Login from './pages/Login.jsx'
 import AuthProvider, {  } from './contexts/auth.context.jsx'
 import Admin from './pages/Admin.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import AddGame, { addGameAction } from './pages/AddGame.jsx'
 
 const router = createBrowserRouter([
   {element : <App/>,children : [{index : true, element : <Home/>},
@@ -30,8 +31,15 @@ const router = createBrowserRouter([
   },
   {
     element : <ProtectedRoute><Admin /></ProtectedRoute> ,
-    path : '/admin'
-  }
+    path : '/admin',
+    
+  },
+  {
+    element : <ProtectedRoute><AddGame /></ProtectedRoute> ,
+    path : '/admin/addgame',
+    action : addGameAction
+  },
+  
 ]}
 ])
 
