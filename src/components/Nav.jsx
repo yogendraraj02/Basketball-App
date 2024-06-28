@@ -72,9 +72,9 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <button onClick={logout} className="nav-link">
+                <NavLink to="/logout" className="nav-link">
                     Logout
-                  </button>
+                </NavLink>
                 </li>
               </>
             )}

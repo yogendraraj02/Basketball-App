@@ -12,6 +12,7 @@ import AuthProvider, {  } from './contexts/auth.context.jsx'
 import Admin from './pages/Admin.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import AddGame, { addGameAction } from './pages/AddGame.jsx'
+import Logout from './pages/Logout.jsx'
 
 const router = createBrowserRouter([
   {element : <App/>,children : [{index : true, element : <Home/>},
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     element : <Login/>,
     path : '/login'
 
+  },
+  {
+    element: <Logout />,
+    path: "/logout",
   },
   {
     element : <ProtectedRoute><Admin /></ProtectedRoute> ,
